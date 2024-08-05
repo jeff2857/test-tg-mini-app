@@ -9,8 +9,19 @@ export const Connect = () => {
 
   const connect = async () => {
     try {
-      const accounts = await sdk?.connect();
-      setAccount(accounts?.[0]);
+      // const accounts = await sdk?.connect();
+      // setAccount(accounts?.[0]);
+      if (!window.ethereum) {
+        throw new Error("no window.ethereum");
+      }
+      const accs = await window.ethereum.request({
+        method: "eth_requestAccounts",
+        params: [],
+      });
+      if (!accs) {
+        throw new Error("no accounts");
+      }
+      setAccount((accs as string[])[0]);
     } catch (err) {
       console.warn("failed to connect..", err);
     }
@@ -30,6 +41,8 @@ export const Connect = () => {
           </>
         </div>
       )}
+      <div>chainId: {chainId}</div>
+      <div>connected: {connected}</div>
     </div>
   );
 };
