@@ -33,6 +33,12 @@ export const Connect = () => {
       <button style={{ padding: 10, margin: 10 }} onClick={() => connect()}>
         Connect
       </button>
+      <div
+        style={{ padding: 10, margin: 10, backgroundColor: "gray" }}
+        onClick={() => connect()}
+      >
+        Button
+      </div>
       {connected && (
         <div>
           <>
