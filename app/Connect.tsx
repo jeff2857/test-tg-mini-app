@@ -8,6 +8,7 @@ export const Connect = () => {
   const { sdk, connected, connecting, provider, chainId } = useSDK();
 
   const connect = async () => {
+    console.log("connect");
     try {
       // const accounts = await sdk?.connect();
       // setAccount(accounts?.[0]);
@@ -29,7 +30,7 @@ export const Connect = () => {
 
   return (
     <div className="App">
-      <button style={{ padding: 10, margin: 10 }} onClick={connect}>
+      <button style={{ padding: 10, margin: 10 }} onClick={() => connect()}>
         Connect
       </button>
       {connected && (
